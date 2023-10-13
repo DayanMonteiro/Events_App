@@ -11,6 +11,36 @@ export default function Home({ data }) {
       </Head>
 
       {/* <HomePage data={data} /> */}
+
+      <main>
+        <a href="">
+          <img />
+          <h2>Events in London</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac
+            blandit lorem, eu laoreet quam. Maecenas at auctor lectus, pulvinar
+            dapibus ligula
+          </p>
+        </a>
+        <a href="">
+          <img />
+          <h2>Events in San Francisco</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac
+            blandit lorem, eu laoreet quam. Maecenas at auctor lectus, pulvinar
+            dapibus ligula
+          </p>
+        </a>
+        <a href="">
+          <img />
+          <h2>Events in Barcelona</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac
+            blandit lorem, eu laoreet quam. Maecenas at auctor lectus, pulvinar
+            dapibus ligula
+          </p>
+        </a>
+      </main>
     </div>
   );
 }
