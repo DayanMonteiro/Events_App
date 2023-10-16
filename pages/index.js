@@ -1,5 +1,6 @@
 import Head from "next/head";
-// import { HomePage } from "../src/components/home/home-page";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Home({ data }) {
   return (
@@ -10,36 +11,20 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <HomePage data={data} /> */}
-
       <main>
-        <a href="">
-          <img />
-          <h2>Events in London</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac
-            blandit lorem, eu laoreet quam. Maecenas at auctor lectus, pulvinar
-            dapibus ligula
-          </p>
-        </a>
-        <a href="">
-          <img />
-          <h2>Events in San Francisco</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac
-            blandit lorem, eu laoreet quam. Maecenas at auctor lectus, pulvinar
-            dapibus ligula
-          </p>
-        </a>
-        <a href="">
-          <img />
-          <h2>Events in Barcelona</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac
-            blandit lorem, eu laoreet quam. Maecenas at auctor lectus, pulvinar
-            dapibus ligula
-          </p>
-        </a>
+        {data?.map((ev) => (
+          <Link key={ev.id} href={`/events/${ev.id}`} passHref>
+            <a className="card" href={`/events/${ev.id}`}>
+              <div className="image">
+                <Image width={600} height={400} alt={ev.title} src={ev.image} />
+              </div>
+              <div className="content">
+                <h2> {ev.title} </h2>
+                <p> {ev.description} </p>
+              </div>
+            </a>
+          </Link>
+        ))}
       </main>
     </div>
   );
@@ -47,6 +32,7 @@ export default function Home({ data }) {
 
 export async function getServerSideProps() {
   const { events_categories } = await import("/data/data.json");
+  console.log("events_categories", events_categories);
   return {
     props: {
       data: events_categories,
