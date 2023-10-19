@@ -3,5 +3,6 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
+  "/events/[cat]/[id]": "pages/events/[cat]/[id].js",
   "/events/[cat]": "pages/events/[cat].js"
 }
