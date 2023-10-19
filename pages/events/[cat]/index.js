@@ -2,16 +2,35 @@ import Image from "next/image";
 import Link from "next/link";
 
 /* eslint-disable @next/next/no-typos */
-const EventsCatPage = ({ data }) => {
+const EventsCatPage = ({ data, pageName }) => {
+  const correctionInPageName = () => {
+    return pageName
+      .split("-")
+      .map((pageName) => capitalizeFirstLetter(pageName))
+      .join(" ");
+  };
+
+  function capitalizeFirstLetter(pageName) {
+    return pageName.charAt(0).toUpperCase() + pageName.slice(1);
+  }
+
+  const formattedString = correctionInPageName(pageName);
+
   return (
     <div>
-      <h1>Events in London</h1>
+      <h1>Events in {formattedString}</h1>
       <div>
         {data.map((ev) => (
-          <Link key={ev?.id} href={`/events/${ev?.city}/${ev?.id}`}>
-            <Image src={ev?.image} alt={ev?.title} width={300} height={300} />
-            <h2>{ev?.title}</h2>
-            <p>{ev?.description}</p>
+          <Link
+            key={ev?.id}
+            href={`/events/${ev?.city}/${ev?.id}`}
+            passHref={true}
+          >
+            <a>
+              <Image src={ev?.image} alt={ev?.title} width={300} height={300} />
+              <h2>{ev?.title}</h2>
+              <p>{ev?.description}</p>
+            </a>
           </Link>
         ))}
       </div>
