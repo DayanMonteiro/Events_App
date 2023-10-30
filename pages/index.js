@@ -1,6 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
+import { HomePage } from "../src/components/home/home-page";
 
 export default function Home({ data }) {
   return (
@@ -11,21 +10,7 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        {data?.map((ev) => (
-          <Link key={ev.id} href={`/events/${ev.id}`} passHref>
-            <a className="card" href={`/events/${ev.id}`}>
-              <div className="image">
-                <Image width={600} height={400} alt={ev.title} src={ev.image} />
-              </div>
-              <div className="content">
-                <h2> {ev.title} </h2>
-                <p> {ev.description} </p>
-              </div>
-            </a>
-          </Link>
-        ))}
-      </main>
+      <HomePage data={data} />
     </div>
   );
 }
