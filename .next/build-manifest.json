@@ -25,10 +25,25 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
+    "/about-us": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/about-us.js"
+    ],
     "/events": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/events.js"
+    ],
+    "/events/[cat]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/events/[cat].js"
+    ],
+    "/events/[cat]/[id]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/events/[cat]/[id].js"
     ]
   },
   "ampFirstPages": []

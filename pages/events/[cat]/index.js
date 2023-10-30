@@ -1,42 +1,8 @@
-import Image from "next/image";
-import Link from "next/link";
+import CatEvent from "../../../src/components/events/catEvent";
 
-/* eslint-disable @next/next/no-typos */
-const EventsCatPage = ({ data, pageName }) => {
-  const correctionInPageName = () => {
-    return pageName
-      .split("-")
-      .map((pageName) => capitalizeFirstLetter(pageName))
-      .join(" ");
-  };
-
-  function capitalizeFirstLetter(pageName) {
-    return pageName.charAt(0).toUpperCase() + pageName.slice(1);
-  }
-
-  const formattedString = correctionInPageName(pageName);
-
-  return (
-    <div>
-      <h1>Events in {formattedString}</h1>
-      <div>
-        {data.map((ev) => (
-          <Link
-            key={ev?.id}
-            href={`/events/${ev?.city}/${ev?.id}`}
-            passHref={true}
-          >
-            <a>
-              <Image src={ev?.image} alt={ev?.title} width={300} height={300} />
-              <h2>{ev?.title}</h2>
-              <p>{ev?.description}</p>
-            </a>
-          </Link>
-        ))}
-      </div>
-    </div>
-  );
-};
+const EventsCatPage = ({ data, pageName }) => (
+  <CatEvent data={data} pageName={pageName} />
+);
 
 export default EventsCatPage;
 
@@ -49,7 +15,7 @@ export async function getStaticPaths() {
       },
     };
   });
-
+  console.log(allPaths);
   return {
     paths: allPaths,
     fallback: false,
