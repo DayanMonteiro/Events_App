@@ -7,17 +7,22 @@ const SingleEvent = ({ data }) => {
   const router = useRouter();
   const [message, setMessage] = useState("");
 
+  console.log("inputEmail", inputEmail);
+  console.log("router", router);
+
   const onSubmit = async (e) => {
     e.preventDefault();
     const emailValue = inputEmail.current.value;
+
+    console.log("emailValue", emailValue);
     const eventId = router?.query.id;
 
-    const validRegex =
-      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    // const validRegex =
+    //   /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-    if (!emailValue.match(validRegex)) {
-      setMessage("Please introduce a correct email address");
-    }
+    // if (!emailValue.match(validRegex)) {
+    //   setMessage("Please introduce a correct email address");
+    // }
 
     try {
       const response = await fetch("/api/email-registration", {
@@ -30,8 +35,9 @@ const SingleEvent = ({ data }) => {
 
       if (!response.ok) throw new Error(`Error: ${response.status}`);
       const data = await response.json();
-      setMessage(data.message);
-      inputEmail.current.value = "";
+      console.log("POST", data);
+      // setMessage(data.message);
+      //  inputEmail.current.value = "";
     } catch (e) {
       console.log("ERROR", e);
     }
