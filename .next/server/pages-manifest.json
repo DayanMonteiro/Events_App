@@ -2,6 +2,5 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/events/[cat]/[id]": "pages/events/[cat]/[id].js",
-  "/api/email-registration": "pages/api/email-registration.js"
+  "/": "pages/index.js"
 }
